@@ -1,0 +1,45 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: managed-cluster
+  region: us-east-2
+
+managedNodeGroups:
+  - name: ng-1
+    minSize: 1
+    maxSize: 3
+    desiredCapacity: 2
+    instancesDistribution:
+      maxPrice: 0.2
+      instanceTypes: ["t2.small", "t3.small"]
+      onDemandBaseCapacity: 0
+      onDemandPercentageAboveBaseCapacity: 50
+    ssh:
+      allow: true
+      publicKeyName: eks-cluster
+    tags:
+      nodegroup-role: worker
+    iam:
+      withAddonPolicies:
+        autoScaler: true
+
+  - name: ng-2
+    minSize: 1
+    maxSize: 3
+    desiredCapacity: 1
+    instancesDistribution:
+      maxPrice: 0.2
+      instanceTypes: ["t2.small", "t3.small"]
+      onDemandBaseCapacity: 0
+      onDemandPercentageAboveBaseCapacity: 50
+    ssh:
+      allow: true
+      publicKeyName: eks-cluster
+    tags:
+      nodegroup-role: worker
+    iam:
+      withAddonPolicies:
+        autoScaler: true
+        
