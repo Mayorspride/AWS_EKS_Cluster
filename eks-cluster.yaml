@@ -6,11 +6,18 @@ metadata:
   name: managed-cluster
   region: us-east-2
 
+vpc: #vpc-02679738c68185c22
+  subnets:
+      us-east-2c: { id: subnet-0283e489d6390d59c }
+      us-east-2b: { id: subnet-0bcf1e6c59083c18b }
+      us-east-2a: { id: subnet-0edc2ca51f7f776e4 }
+      
 managedNodeGroups:
   - name: ng-1
     minSize: 1
     maxSize: 3
     desiredCapacity: 2
+    availabilityZones: ["us-east-2a", "us-east-2b"]
     instancesDistribution:
       maxPrice: 0.2
       instanceTypes: ["t2.small", "t3.small"]
@@ -20,7 +27,7 @@ managedNodeGroups:
       allow: true
       publicKeyName: eks-cluster
     tags:
-      nodegroup-role: worker
+      nodegroup-role: nginx
     iam:
       withAddonPolicies:
         autoScaler: true
@@ -29,6 +36,7 @@ managedNodeGroups:
     minSize: 1
     maxSize: 3
     desiredCapacity: 1
+    availabilityZones: ["us-east-2b", "us-east-bc"]
     instancesDistribution:
       maxPrice: 0.2
       instanceTypes: ["t2.small", "t3.small"]
@@ -38,8 +46,7 @@ managedNodeGroups:
       allow: true
       publicKeyName: eks-cluster
     tags:
-      nodegroup-role: worker
+      nodegroup-role: traefik
     iam:
       withAddonPolicies:
         autoScaler: true
-        
