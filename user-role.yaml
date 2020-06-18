@@ -1,0 +1,79 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: dev-namespace-role
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs: ["*"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: dev-rolebinding
+subjects:
+- kind: User
+  name: dev-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: dev-namespace-role
+  apiGroup: rbac.authorization.k8s.io
+
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: user-1
+  name: andi-namespace-role
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs: ["edit"]
+  
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: andi-rolebinding
+  namespace: user-1
+subjects:
+- kind: User
+  name: andi
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: andi-namespace-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: user-2
+  name: pete-namespace-role
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs: ["edit", "get", "watch", "list"]
+  
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pete-rolebinding
+  namespace: user-2
+subjects:
+- kind: User
+  name: pete
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pete-namespace-role
+  apiGroup: rbac.authorization.k8s.io
