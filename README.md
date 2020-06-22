@@ -7,7 +7,7 @@ __NOTE:__
 - aws-auth-configmap file contains RBAC configuration for the cluster and it is used to grant additional users and roles the ability to interact with the cluster.
 - ec2-asg-policy file includes the required policy needed by EKS to manage worker nodes for auto scaling. 
 - eks-cluster file contains detailed information about the cluster as well as the Auto Scaling Groups.
-- externalDnsManifest file is used to create the External DNS which allows the cluster to automatially update DNS records in the code-challenge-test.com private zone which was manually created using the AWS Web Console. A secret that the external DNS uses to communicate with the API for correct level of access was separated created, but not documented here.
+- externalDnsManifest file is used to create the External DNS which allows the cluster to automatially update DNS records in the code-challenge-test.com private zone which was manually created using the AWS Web Console. A secret that the external DNS uses to communicate with the API for correct level of access was separately created, but not documented here.
 - namespace file contains information about user-1 and user-2 namespaces. The default namespace was initially created during cluster creation.
 - nginxConfig manifest is used to test user permission by attempting to create an Nginx pod in a specific namespace.
 - IAM Role for Kubernetes resources creation was done using the AWS web console and assigned below policy to the dev-user:
