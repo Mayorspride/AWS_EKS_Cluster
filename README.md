@@ -10,7 +10,7 @@ __NOTE:__
 - externalDnsManifest file is used to create the External DNS which allows the cluster to automatially update DNS records in the code-challenge-test.com private zone which was manually created using the AWS Web Console.
 - namespace file contains information about user-1 and user-2 namespaces. The default namespace was initially created during cluster creation.
 - nginxConfig manifest is used to test user permission by attempting to create an Nginx pod in a specific namespace.
-- IAM Role for Kubernetes resources creation was done using the AWS web console and assigned below policy to the dev-user
+- IAM Role for Kubernetes resources creation was done using the AWS web console and assigned below policy to the dev-user:
   1. AmazonEC2FullAccess
   2. IAMFullAccess
   3. AmazonVPCFullAccess
