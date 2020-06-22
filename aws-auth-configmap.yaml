@@ -1,0 +1,37 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::285446172374:role/eksctl-managed-cluster-nodegroup-NodeInstanceRole-1434MPC288FEN
+      username: system:node:{{EC2PrivateDNSName}}
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::285446172374:role/eksctl-managed-cluster-nodegroup-NodeInstanceRole-1B1ICP5ZLFS4G
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    - userarn: arn:aws:iam::285446172374:user/dev-user
+      username: dev-user
+      groups:
+        - system:masters
+    - userarn: arn:aws:iam::285446172374:user/andi
+      username: andi
+      groups:
+        - andi-namespace-role
+    - userarn: arn:aws:iam::285446172374:user/pete
+      username: pete
+      groups:
+        - pete-namespace-role
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"mapRoles":"- groups:\n  - system:bootstrappers\n  - system:nodes\n  rolearn: arn:aws:iam::285446172374:role/eksctl-managed-cluster-nodegroup-NodeInstanceRole-1434MPC288FEN\n  username: system:node:{{EC2PrivateDNSName}}\n- groups:\n  - system:bootstrappers\n  - system:nodes\n  rolearn: arn:aws:iam::285446172374:role/eksctl-managed-cluster-nodegroup-NodeInstanceRole-1B1ICP5ZLFS4G\n  username: system:node:{{EC2PrivateDNSName}}\n","mapUsers":"- userarn: arn:aws:iam::285446172374:user/dev-user\n  username: dev-user\n  groups:\n    - system:masters\n"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2020-06-20T21:38:43Z","name":"aws-auth","namespace":"kube-system","resourceVersion":"1086","selfLink":"/api/v1/namespaces/kube-system/configmaps/aws-auth","uid":"875a8f17-6dc7-4fe2-b8c0-08848f2227c4"}}
+  creationTimestamp: "2020-06-20T21:38:43Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "257711"
+  selfLink: /api/v1/namespaces/kube-system/configmaps/aws-auth
+  uid: 875a8f17-6dc7-4fe2-b8c0-08848f2227c4
