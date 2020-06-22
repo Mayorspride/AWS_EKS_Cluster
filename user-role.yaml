@@ -33,7 +33,7 @@ metadata:
 rules:
 - apiGroups: [""]
   resources: ["*"]
-  verbs: ["edit"]
+  verbs: ["get", "watch", "list", "create", "update"]
   
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -60,7 +60,7 @@ metadata:
 rules:
 - apiGroups: [""]
   resources: ["*"]
-  verbs: ["edit", "get", "watch", "list"]
+  verbs: ["get", "watch", "list", "create", "update"]
   
 ---
 
