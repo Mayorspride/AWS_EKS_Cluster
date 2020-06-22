@@ -18,4 +18,4 @@ __NOTE:__
   5. EKS-Admin-policy
 - dev-user, andi, and pete users were created using the AWS Web Console.
 - user role manifest file includes the Roles/ClusterRole, Rolebinding/ClusterRoleBinding for andi, pete, and dev-user.
-- nginx-externalDNStest manifest will create nginx service for testing 
+- nginx-externalDNStest manifest will create nginx service for testing external DNS.
