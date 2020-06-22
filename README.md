@@ -11,10 +11,10 @@ __NOTE:__
 - namespace file contains information about user-1 and user-2 namespaces. The default namespace was initially created during cluster creation.
 - nginxConfig manifest is used to test user permission by attempting to create an Nginx pod in a specific namespace.
 - IAM Role for Kubernetes resources creation was done using the AWS web console and assigned below policy to the dev-user
-  # AmazonEC2FullAccess
-  # IAMFullAccess
-  # AmazonVPCFullAccess
-  # CloudFormation-Admin-policy
-  # EKS-Admin-policy
+  1. AmazonEC2FullAccess
+  2. IAMFullAccess
+  3. AmazonVPCFullAccess
+  4. CloudFormation-Admin-policy
+  5. EKS-Admin-policy
 - dev-user, andi, and pete users were created using the AWS Web Console.
 - user role manifest file includes the Roles/ClusterRole, Rolebinding/ClusterRoleBinding for andi, pete, and dev-user.
